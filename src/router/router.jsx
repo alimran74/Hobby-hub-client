@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import Error from "../pages/Error";
 import Home from "../pages/Home";
-import AllGroup from "../components/AllGroup";
+
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -10,6 +10,7 @@ import MyGroup from "../pages/MyGroup";
 import CreateGroup from "../pages/CreateGroup";
 import FeaturedGroup from "../components/FeaturedGroup";
 import 'react-tooltip/dist/react-tooltip.css';
+import AllGroup from "../pages/AllGroup";
 
 
 
@@ -28,13 +29,14 @@ const router = createBrowserRouter(
                     element: <Home/>
                 },
                 {
-                  path: 'all_group',
+                  path: 'allGroup',
                   element: <AllGroup/> 
                 },
                 {
                     path: '/group',
                     element: <FeaturedGroup/>
-                }
+                },
+                
                 
 
             ]

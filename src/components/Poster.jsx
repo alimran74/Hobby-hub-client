@@ -112,7 +112,7 @@ const Poster = () => {
           <h2 className="text-3xl font-extrabold text-gray-800 mb-6">HOW IT WORKS</h2>
           <ul className="timeline timeline-vertical">
             <li>
-              <div className="timeline-start">Step 1</div>
+              <div className="timeline-start">Step </div>
               <div className="timeline-middle">
                 <div className="badge badge-primary">1</div>
               </div>
@@ -123,7 +123,7 @@ const Poster = () => {
               <hr />
             </li>
             <li>
-              <div className="timeline-start">Step 2</div>
+              <div className="timeline-start">Step </div>
               <div className="timeline-middle">
                 <div className="badge badge-primary">2</div>
               </div>
@@ -134,7 +134,7 @@ const Poster = () => {
               <hr />
             </li>
             <li>
-              <div className="timeline-start">Step 3</div>
+              <div className="timeline-start">Step </div>
               <div className="timeline-middle">
                 <div className="badge badge-primary">3</div>
               </div>
