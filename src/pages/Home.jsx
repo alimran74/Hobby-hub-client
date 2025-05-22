@@ -4,7 +4,8 @@ import BannerSlider from '../components/BannerSlider';
 import FeaturedGroup from '../components/FeaturedGroup';
 
 import Poster from '../components/Poster';
-import { data, useLoaderData } from 'react-router';
+import {  useLoaderData } from 'react-router';
+
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
 
         <div>
             <h1>{data.title}</h1>
+           
             <BannerSlider/>
             <FeaturedGroup/>
             <Poster/>

@@ -4,12 +4,13 @@ import './index.css'
 import { RouterProvider } from 'react-router'
 import router from './router/router'
 import Loader from './components/Loader'
+import AuthProvider from './provider/AuthProvider'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
+    <AuthProvider>
     <RouterProvider router = {router} fallbackElement={ <Loader/> }/>
-     
+     </AuthProvider>
   </StrictMode>,
 )

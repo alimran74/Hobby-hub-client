@@ -1,8 +1,11 @@
-import React from 'react';
+
 import { Link, NavLink } from 'react-router';
 
 
+
+
 const Navbar = () => {
+ 
     return (
         <div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
@@ -55,13 +58,15 @@ const Navbar = () => {
       </ul>
     </div>
   <div className="navbar-end">
-    
-      
+    <Link to='/auth/login'>
+       <button className='btn-primary'>Log IN</button>
+      </Link>
  
   </div>
 </div>
     );
 };
+
 
 export default Navbar;
 

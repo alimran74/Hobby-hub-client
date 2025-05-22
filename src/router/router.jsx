@@ -38,6 +38,7 @@ const router = createBrowserRouter(
                     path: '/group',
                     element: <FeaturedGroup/>
                 },
+               
                 
                 
 
@@ -47,15 +48,7 @@ const router = createBrowserRouter(
             path: '/auth',
             element: <AuthLayout/>,
             children:[
-                {
-                    path:'login',
-                    element: <Login/>
-
-                },
-                {
-                    path:'/auth/register',
-                    element: <Register/>
-                },
+                
                 {
                     path:'/auth/myGroup',
                     element: <MyGroup/>
@@ -63,7 +56,16 @@ const router = createBrowserRouter(
                 {
                    path:'/auth/createGroup',
                    element: <CreateGroup/> 
-                }
+                },
+                {
+                    path:'/auth/login',
+                    element: <Login/>
+
+                },
+                {
+                    path:'/auth/register',
+                    element: <Register/>
+                },
             ]
         }
     ]
