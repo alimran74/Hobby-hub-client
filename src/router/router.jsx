@@ -11,6 +11,7 @@ import CreateGroup from "../pages/CreateGroup";
 import FeaturedGroup from "../components/FeaturedGroup";
 import 'react-tooltip/dist/react-tooltip.css';
 import AllGroup from "../pages/AllGroup";
+import Loader from "../components/Loader";
 
 
 
@@ -26,7 +27,8 @@ const router = createBrowserRouter(
             children:[
                 {
                     index:true,
-                    element: <Home/>
+                    element: <Home/>,
+                    loader: Loader,
                 },
                 {
                   path: 'allGroup',
