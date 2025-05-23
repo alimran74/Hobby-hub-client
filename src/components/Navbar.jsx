@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut,  } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut().catch(err => console.log(err));
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/auth/login">
-            <button className="btn btn-sm btn-primary">Login</button>
+            <button className="btn btn-sm bg-purple-400">Login</button>
           </Link>
         )}
       </div>

@@ -16,10 +16,11 @@ const Home = () => {
 
         <div>
             <h1>{data.title}</h1>
-           
+           <div className='bg-purple-100'>
             <BannerSlider/>
             <FeaturedGroup/>
             <Poster/>
+            </div>
             
 
         </div>

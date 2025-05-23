@@ -49,7 +49,7 @@ const BannerSlider = () => {
         >
           <img
             src={slide.src}
-            className="w-full"
+            className="w-full h-full object-cover"
             alt={`Slide ${index + 1}`}
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

@@ -12,6 +12,7 @@ import FeaturedGroup from "../components/FeaturedGroup";
 import 'react-tooltip/dist/react-tooltip.css';
 import AllGroup from "../pages/AllGroup";
 import Loader from "../components/Loader";
+import PrivateRoute from "./PrivateRouter";
 
 
 
@@ -30,14 +31,14 @@ const router = createBrowserRouter(
                     element: <Home/>,
                     loader: Loader,
                 },
-                {
-                  path: 'allGroup',
-                  element: <AllGroup/> 
-                },
+                
                 {
                     path: '/group',
                     element: <FeaturedGroup/>
                 },
+                {
+                    
+                }
                
                 
                 
@@ -51,11 +52,24 @@ const router = createBrowserRouter(
                 
                 {
                     path:'/auth/myGroup',
-                    element: <MyGroup/>
+                    element: (<PrivateRoute>
+                    <MyGroup/></PrivateRoute>
+                    )
                 },
                 {
                    path:'/auth/createGroup',
-                   element: <CreateGroup/> 
+                   element: (
+                    <PrivateRoute>
+                   <CreateGroup/> 
+                   </PrivateRoute>
+                )
+                },
+                {
+                  path: '/auth/allGroup',
+                  element:( <PrivateRoute>
+                     <AllGroup/>
+                     </PrivateRoute>
+                     ) 
                 },
                 {
                     path:'/auth/login',
