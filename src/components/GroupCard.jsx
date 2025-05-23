@@ -1,34 +1,92 @@
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+import { AuthContext } from "../provider/AuthProvider";
 
 const GroupCard = () => {
+    const { user } = useContext(AuthContext);
   const { id } = useParams();
+  const navigate = useNavigate();
   const [group, setGroup] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:7000/groups/${id}`)
-      .then(res => res.json())
-      .then(data => setGroup(data))
-      .catch(err => console.error("Error loading group:", err));
-  }, [id]);
+      .then((res) => res.json())
+      .then((data) => setGroup(data))
+      .catch((err) => {
+        console.error("Failed to load group", err);
+        navigate("/"); // Fallback if invalid id
+      });
+  }, [id, navigate]);
 
-  if (!group) {
-    return <p className="p-6 text-gray-600">Loading group details...</p>;
-  }
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This group will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:7000/groups/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() => {
+            toast.success("Group deleted successfully!");
+            navigate("/groups");
+          })
+          .catch((err) => {
+            toast.error("Failed to delete group!");
+            console.error(err);
+          });
+      }
+    });
+  };
+
+  if (!group) return <div className="text-center  p-6">Loading...</div>;
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <img
-        src={group.image}
-        alt={group.name}
-        className="w-full h-64 object-cover rounded"
-      />
-      <h2 className="text-2xl font-bold mt-4">{group.name}</h2>
-      <p className="text-gray-700 mt-2">Category: {group.category}</p>
-      <p className="text-gray-700 mt-1">Location: {group.location}</p>
-      <p className="text-gray-700 mt-1">Max Members: {group.maxMembers}</p>
-      <p className="text-gray-700 mt-1">Description: {group.description}</p>
-    </div>
+    <motion.div
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  className="max-w-xl mx-auto p-8 bg-white dark:bg-purple-100 rounded-lg shadow-lg"
+>
+  <img
+    src={group.image}
+    alt={group.name}
+    className="w-full h-64 object-cover rounded shadow-md"
+  />
+  <h2 className="text-4xl font-extrabold mt-6 text-gray-900 dark:text-purple-900">
+    {group.name}
+  </h2>
+  <p className="mt-4 text-lg font-semibold text-gray-800 dark:text-purple-800">
+    <span className="text-xl font-bold">Category:</span> {group.category}
+  </p>
+  <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
+    <span className="text-xl font-bold">Location:</span> {group.location}
+  </p>
+  <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
+    <span className="text-xl font-bold">Max Members:</span> {group.maxMembers}
+  </p>
+  <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
+    <span className="text-xl font-bold">Description:</span> {group.description}
+  </p>
+  <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
+    <span className="text-xl font-bold">Created by:</span> {user?.displayName || "Unknown"}
+  </p>
+  <button
+    onClick={handleDelete}
+    className="mt-8 w-full py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition duration-300 font-bold text-lg shadow-md"
+  >
+    Delete Group
+  </button>
+</motion.div>
   );
 };
 
