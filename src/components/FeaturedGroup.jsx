@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../provider/AuthProvider"; 
+import { toast } from "react-toastify";
 
 const FeaturedGroup = () => {
   const [groups, setGroups] = useState([]);
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext); // 
 
   useEffect(() => {
     fetch("http://localhost:7000/featured-groups")
@@ -13,6 +16,10 @@ const FeaturedGroup = () => {
   }, []);
 
   const handleViewDetails = (id) => {
+    if (!user) {
+      toast.error("Please login first");
+      return;
+    }
     navigate(`/groups/${id}`);
   };
 
@@ -47,5 +54,6 @@ const FeaturedGroup = () => {
 };
 
 export default FeaturedGroup;
+
 
 
