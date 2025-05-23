@@ -10,6 +10,7 @@ import {  useLoaderData } from 'react-router';
 
 const Home = () => {
     const data = useLoaderData();
+    
    
     
     return   (
@@ -18,7 +19,7 @@ const Home = () => {
             <h1>{data.title}</h1>
            <div className='bg-purple-100'>
             <BannerSlider/>
-            <FeaturedGroup/>
+             <FeaturedGroup /> {/* NOT in children route! */}
             <Poster/>
             </div>
             

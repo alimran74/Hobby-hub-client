@@ -21,6 +21,7 @@ const CreateGroup = () => {
     maxMembers: parseInt(groupData.maxMembers),
     createdByName: user.displayName,
     createdByEmail: user.email,
+    createdAt: new Date(),
   };
 
   try {
