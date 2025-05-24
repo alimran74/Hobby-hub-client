@@ -8,12 +8,14 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MyGroup from "../pages/MyGroup";
 import CreateGroup from "../pages/CreateGroup";
-import FeaturedGroup from "../components/FeaturedGroup";
+
 import "react-tooltip/dist/react-tooltip.css";
 import AllGroup from "../pages/AllGroup";
 import Loader from "../components/Loader";
 import PrivateRoute from "./PrivateRouter";
 import GroupCard from "../components/GroupCard";
+import UpdateGroup from "../components/UpdateGroup";
+
 
 const router = createBrowserRouter([
   {
@@ -26,12 +28,17 @@ const router = createBrowserRouter([
         element: <Home />,
         loader: Loader,
       },
+       {
+        path:"/updateGroup/:id",
+       element: <UpdateGroup/>
+      },
 
       
       {
         path: "/groups/:id",
         element: <GroupCard/>
       },
+     
     ],
   },
   {

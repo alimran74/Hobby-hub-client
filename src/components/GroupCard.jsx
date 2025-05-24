@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
@@ -38,7 +38,7 @@ const GroupCard = () => {
           .then((res) => res.json())
           .then(() => {
             toast.success("Group deleted successfully!");
-            navigate("/groups");
+            navigate("/");
           })
           .catch((err) => {
             toast.error("Failed to delete group!");
@@ -66,7 +66,7 @@ const GroupCard = () => {
     {group.name}
   </h2>
   <p className="mt-4 text-lg font-semibold text-gray-800 dark:text-purple-800">
-    <span className="text-xl font-bold">Category:</span> {group.category}
+    <span className="text-xl font-bold">Group Name:</span> {group.groupName}
   </p>
   <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
     <span className="text-xl font-bold">Location:</span> {group.location}
@@ -78,7 +78,11 @@ const GroupCard = () => {
     <span className="text-xl font-bold">Description:</span> {group.description}
   </p>
   <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
-    <span className="text-xl font-bold">Created by:</span> {user?.displayName || "Unknown"}
+    <span className="text-xl font-bold">Created by:</span> {group.createdByName || "Unknown"}
+
+  </p>
+  <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-red-500">
+    <span className="text-xl font-bold">End Date:</span> {group.endDate}
   </p>
   <button
     onClick={handleDelete}
@@ -86,6 +90,14 @@ const GroupCard = () => {
   >
     Delete Group
   </button>
+  <button
+  onClick={() => navigate(`/updateGroup/${group._id}`)}
+  className="mt-4 w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 font-bold text-lg shadow-md"
+>
+  Update Group
+</button>
+
+
 </motion.div>
   );
 };
