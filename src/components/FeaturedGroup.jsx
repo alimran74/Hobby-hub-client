@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider"; 
 import { toast } from "react-toastify";
+import { ArrowRightCircle } from "lucide-react";
 
 const FeaturedGroup = () => {
   const [groups, setGroups] = useState([]);
@@ -41,11 +42,12 @@ const FeaturedGroup = () => {
             <p className="text-gray-600 mt-1">Max Members: {group.maxMembers}</p>
             <p className="text-gray-600 mt-1">Meeting: {group.location}</p>
             <button
-              onClick={() => handleViewDetails(group._id)}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
-            >
-              View Details
-            </button>
+  onClick={() => handleViewDetails(group._id)}
+  className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-lg font-bold text-lg shadow-md hover:bg-blue-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
+>
+  View Details
+  <ArrowRightCircle className="w-5 h-5 animate-pulse" />
+</button>
           </div>
         </div>
       ))}

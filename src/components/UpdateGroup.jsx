@@ -1,6 +1,7 @@
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { ArrowRightCircle } from "lucide-react";
 
 const UpdateGroup = () => {
   const { id } = useParams();
@@ -66,8 +67,9 @@ const UpdateGroup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-10 p-6 bg-white dark:bg-gray-900 rounded space-y-4 shadow">
-      <h2 className="text-2xl font-bold text-center dark:text-white">Update Group</h2>
+    <div className="min-h-screen px-4 pb-20 bg-gray-50 dark:">
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-20 mb-20 p-6 bg-white dark:bg-purple-100 rounded space-y-4 shadow ">
+      <h2 className="text-2xl font-bold text-center dark:text-black">Update Group</h2>
 
       {[
         { label: "Name", name: "name" },
@@ -78,7 +80,7 @@ const UpdateGroup = () => {
         { label: "End Date", name: "endDate", type: "date" }
       ].map(({ label, name, type = "text" }) => (
         <div key={name}>
-          <label className="text-sm dark:text-white">{label}</label>
+          <label className="text-sm dark:text-black">{label}</label>
           <input
             type={type}
             name={name}
@@ -105,7 +107,16 @@ const UpdateGroup = () => {
       <button type="submit" className="w-full py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
         Update Group
       </button>
+      
     </form>
+    <Link to="/">
+    <button
+  className="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-lg font-bold text-lg shadow-md hover:bg-blue-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
+>
+  Return Home
+  <ArrowRightCircle className="w-5 h-5 animate-pulse" />
+</button></Link>
+    </div>
   );
 };
 

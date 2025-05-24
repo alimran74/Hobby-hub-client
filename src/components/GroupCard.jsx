@@ -55,7 +55,7 @@ const GroupCard = () => {
   initial={{ opacity: 0, y: 50 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.5 }}
-  className="max-w-xl mx-auto p-8 bg-white dark:bg-purple-100 rounded-lg shadow-lg"
+  className="max-w-xl mx-auto p-8 bg-white dark:bg-purple-100 rounded-lg shadow-lg my-8"
 >
   <img
     src={group.image}

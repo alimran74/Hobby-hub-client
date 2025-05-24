@@ -1,10 +1,11 @@
-import React from 'react';
+
 
 import BannerSlider from '../components/BannerSlider';
 import FeaturedGroup from '../components/FeaturedGroup';
 
 import Poster from '../components/Poster';
 import {  useLoaderData } from 'react-router';
+import HobbyAdd from '../components/HobbyAdd';
 
 
 
@@ -19,8 +20,9 @@ const Home = () => {
             <h1>{data.title}</h1>
            <div className='bg-purple-100'>
             <BannerSlider/>
-             <FeaturedGroup /> {/* NOT in children route! */}
+             <FeaturedGroup /> 
             <Poster/>
+            <HobbyAdd/>
             </div>
             
 
