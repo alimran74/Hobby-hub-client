@@ -1,12 +1,50 @@
-# React + Vite
+# 🎯 HobbyHub - Local Hobby Group Organizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**HobbyHub** is a dynamic web platform where users can discover, create, and join local hobby groups based on their interests. From photography to book clubs, connect with like-minded people and grow your community!
 
-Currently, two official plugins are available:
+## 🚀 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 [Live Website Link](https://your-firebase-app.web.app)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔥 Features
+
+- 🔐 Firebase Authentication (Google Login, Email/Password)
+- 🧠 Role-Based Navigation (Create, Join, View Groups)
+- 📅 Group Details, Filtering & Search
+- 📊 Data Visualization (Recharts)
+- 🌗 Light/Dark Theme Toggle
+- ⚡ Responsive UI with Animations
+- 📝 CRUD Functionality for Hobby Groups
+- 🔒 Protected Routes for Authenticated Users
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React
+- React Router DOM
+- Firebase Auth
+- Tailwind CSS + DaisyUI
+- Framer Motion
+- Recharts
+- React Toastify
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Dotenv
+
+## 🔐 Environment Variables
+
+To keep Firebase config and MongoDB credentials secure, use a `.env` file:
+
+```env
+VITE_API_BASE_URL=https://your-backend-url.com
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
