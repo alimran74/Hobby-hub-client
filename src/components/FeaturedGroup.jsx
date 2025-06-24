@@ -10,7 +10,7 @@ const FeaturedGroup = () => {
   const { user } = useContext(AuthContext); // 
 
   useEffect(() => {
-    fetch("http://localhost:7000/featured-groups")
+    fetch("https://hobby-hub-server-seven-bay.vercel.app/featured-groups")
       .then((res) => res.json())
       .then((data) => setGroups(data))
       .catch((err) => console.error("Failed to load featured groups", err));

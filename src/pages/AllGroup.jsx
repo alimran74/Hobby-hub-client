@@ -10,7 +10,7 @@ const AllGroup = () => {
   const { user } = useContext(AuthContext); // get current user
 
   useEffect(() => {
-    fetch("http://localhost:7000/groups")
+    fetch("https://hobby-hub-server-seven-bay.vercel.app/groups")
       .then((res) => res.json())
       .then((data) => setGroups(data))
       .catch((error) => console.error("Failed to fetch groups:", error));

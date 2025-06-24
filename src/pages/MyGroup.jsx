@@ -8,7 +8,7 @@ const MyGroup = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:7000/groups?createdByEmail=${user.email}`)
+      fetch(`https://hobby-hub-server-seven-bay.vercel.app/groups?createdByEmail=${user.email}`)
         .then(res => {
           if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);

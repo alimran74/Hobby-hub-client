@@ -13,7 +13,7 @@ const UpdateGroup = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:7000/groups/${id}`)
+    fetch(`https://hobby-hub-server-seven-bay.vercel.app/groups/${id}`)
       .then(res => res.json())
       .then(data => setFormData(data))
       .catch(() => toast.error("Failed to load group"));
@@ -35,7 +35,7 @@ const UpdateGroup = () => {
     const updatedData = { ...formData };
 
     try {
-      const response = await fetch(`http://localhost:7000/groups/${id}`, {
+      const response = await fetch(`https://hobby-hub-server-seven-bay.vercel.app/groups/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAM3UqYr7lBpdSl1ML2EyjimD11XJQAx8o",
-  authDomain: "hobbyhub-27dd6.firebaseapp.com",
-  projectId: "hobbyhub-27dd6",
-  storageBucket: "hobbyhub-27dd6.firebasestorage.app",
-  messagingSenderId: "619144493006",
-  appId: "1:619144493006:web:2187b824b37d7999899d9f"
+  apiKey:` process.env.REACT_APP_FIREBASE_API_KEY`,
+  authDomain: `process.env.REACT_APP_FIREBASE_AUTH_DOMAIN`,
+  projectId: `process.env.REACT_APP_FIREBASE_PROJECT_ID`,
+  storageBucket: `process.env.REACT_APP_FIREBASE_STORAGE_BUCKET`,
+  messagingSenderId: `process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID`,
+  appId: `process.env.REACT_APP_FIREBASE_APP_ID`,
 };
 
 // Initialize Firebase

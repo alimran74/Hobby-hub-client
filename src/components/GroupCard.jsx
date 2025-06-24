@@ -12,7 +12,7 @@ const GroupCard = () => {
   const [group, setGroup] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:7000/groups/${id}`)
+    fetch(`https://hobby-hub-server-seven-bay.vercel.app/groups/${id}`)
       .then((res) => res.json())
       .then((data) => setGroup(data))
       .catch((err) => {
@@ -32,7 +32,7 @@ const GroupCard = () => {
       cancelButtonColor: "#3085d6",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:7000/groups/${id}`, {
+        fetch(`https://hobby-hub-server-seven-bay.vercel.app/groups/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
