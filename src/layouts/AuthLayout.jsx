@@ -6,14 +6,14 @@ import { ToastContainer } from 'react-toastify';
 
 const AuthLayout = () => {
     return (
-        <div>
-            <Navbar/>
-            <div className='min-h-[calc(100vh-116px)]'>
-                <Outlet/>
-            </div>
-            <Footer/>
-            <ToastContainer position='top-center'></ToastContainer>
-        </div>
+         <div className="flex flex-col min-h-screen">
+      <Navbar />
+       <ToastContainer position='top-center'></ToastContainer>
+      <main className="flex-grow p-4 bg-purple-100">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
     );
 };
 

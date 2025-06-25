@@ -1,31 +1,32 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
+import { Player } from "@lottiefiles/react-lottie-player";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signIn, signInWithGoogle } = use(AuthContext);
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+
   const handleLogIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     signIn(email, password)
-      .then((result) => {
-        const user = result.user;
+      .then(() => {
         toast.success("✅ Login successful");
         navigate("/");
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        const errorMessage = error.message;
-        toast.error(`❌ ${errorMessage}`);
+        toast.error(`❌ ${error.message}`);
       });
   };
+
   const handleGoogleLogin = () => {
     signInWithGoogle()
-      .then((result) => {
+      .then(() => {
         toast.success("✅ Google Login successful");
         navigate("/");
       })
@@ -33,48 +34,72 @@ const Login = () => {
         toast.error(`❌ ${error.message}`);
       });
   };
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 bg-purple-100">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h1 className="font-semibold text-2xl text-center py-5 text-purple-600">
-          Login to Your Account
-        </h1>
-        <form onSubmit={handleLogIn} className="card-body">
-          <fieldset className="fieldset">
-            {/* email */}
-            <label className="label">Email</label>
-            <input
-              name="email"
-              type="email"
-              className="input"
-              placeholder="Email"
-            />
 
-            {/* password */}
-            <label className="label">Password</label>
-            <input
-              name="password"
-              type="password"
-              className="input"
-              placeholder="Password"
-            />
+  return (
+    <div className="flex items-center justify-center min-h-screen p-4">
+      <div className="max-w-4xl w-full bg-white rounded-lg shadow-2xl flex flex-col md:flex-row overflow-hidden">
+        {/* Left side - Lottie animation */}
+        <div className="flex justify-center md:justify-start w-full md:w-1/2 bg-purple-50 p-8">
+          <Player
+            autoplay
+            loop
+            src="/login-animation.json" // Make sure this path is correct
+            style={{ height: 300, width: 300 }}
+          />
+        </div>
+
+        {/* Right side - Login form with grow animation */}
+        <motion.div
+          className="w-full md:w-1/2 p-8"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <h1 className="font-semibold text-2xl text-center py-5 text-purple-600">
+            Login to Your Account
+          </h1>
+          <form onSubmit={handleLogIn} className="space-y-4">
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <label className="block mb-1 font-medium text-gray-700">Email</label>
+              <input
+                name="email"
+                type="email"
+                className="input input-bordered w-full"
+                placeholder="Email"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 font-medium text-gray-700">Password</label>
+              <input
+                name="password"
+                type="password"
+                className="input input-bordered w-full"
+                placeholder="Password"
+                required
+              />
+            </div>
+
+            <div className="text-right">
+              <a href="#" className="link link-hover text-sm text-purple-600">
+                Forgot password?
+              </a>
             </div>
 
             <button
               type="submit"
-              className="btn btn-neutral mt-4 w-full  bg-purple-600 hover:bg-purple-700 "
+              className="btn btn-neutral w-full bg-purple-600 hover:bg-purple-700 transition"
             >
               Login
             </button>
 
-            {/* google btn */}
             <button
-              onClick={handleGoogleLogin}
               type="button"
-              className="btn bg-white text-black border-[#e5e5e5] shadow mt-2"
+              onClick={handleGoogleLogin}
+              className="btn bg-white text-black border border-gray-300 shadow flex items-center justify-center gap-2 w-full"
             >
+              {/* Google SVG */}
               <svg
                 aria-label="Google logo"
                 width="16"
@@ -105,14 +130,14 @@ const Login = () => {
               Login with Google
             </button>
 
-            <p className="font-semibold text-center pt-6">
-              Don't have An Account ?{" "}
+            <p className="font-semibold text-center pt-6 text-gray-700">
+              Don't have an account?{" "}
               <Link className="text-blue-500" to="/auth/register">
                 Register
               </Link>
             </p>
-          </fieldset>
-        </form>
+          </form>
+        </motion.div>
       </div>
     </div>
   );

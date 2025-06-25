@@ -17,7 +17,7 @@ const GroupCard = () => {
       .then((data) => setGroup(data))
       .catch((err) => {
         console.error("Failed to load group", err);
-        navigate("/"); // Fallback if invalid id
+        navigate("/"); 
       });
   }, [id, navigate]);
 

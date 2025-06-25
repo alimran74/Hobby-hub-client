@@ -4,7 +4,7 @@ import React from "react";
 
 const HobbyAdd = () => {
   return (
-    <section className="py-16 px-4 text-center">
+    <section data-aos="fade-up" className="py-16 px-4 text-center">
       <h2 className="text-4xl font-bold text-purple-800 mb-6">
         Why Choose HobbyHub?
       </h2>

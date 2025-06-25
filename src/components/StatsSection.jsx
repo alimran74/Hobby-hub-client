@@ -5,8 +5,9 @@ import { FaUsers, FaCity, FaFireAlt } from "react-icons/fa";
 
 const StatsSection = () => {
   return (
-    <section className="my-12 px-4 max-w-6xl mx-auto text-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10">📊 Platform Highlights</h2>
+    <section data-aos="fade-up"
+     className="my-12 px-4 max-w-6xl mx-auto text-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-purple-800">📊 Platform Highlights</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         
         <div className="card bg-base-100 shadow-xl">

@@ -39,7 +39,7 @@ const BannerSlider = () => {
   }, [slides.length]);
 
   return (
-    <div
+    <div 
   className="carousel w-full mt-6 md:h-[400px]  rounded-lg mx-auto px-7"
 >
       {slides.map((slide, index) => (

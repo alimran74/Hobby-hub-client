@@ -45,7 +45,8 @@ const CreateGroup = () => {
 
   return (
     
-    <div className="max-w-4xl mx-auto  p-4 bg-purple-100 my-10 rounded">
+  <div className='bg-purple-100'>
+      <div className="max-w-4xl mx-auto  p-4 bg-purple-100  rounded">
   <h2 className="text-3xl font-bold text-center mb-6">Create a New Hobby Group</h2>
   <form
     onSubmit={handleCreateGroup}
@@ -77,6 +78,7 @@ const CreateGroup = () => {
     <button className="btn bg-purple-400 md:col-span-2 w-full">Create</button>
   </form>
 </div>
+  </div>
 
   );
 };
