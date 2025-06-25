@@ -5,28 +5,36 @@ import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 import { ToastContainer } from 'react-toastify';
 import Aos from 'aos';
-import 'aos/dist/aos.css'; // 🔥 Don't forget this import
+import 'aos/dist/aos.css';
+import PageWrapper from '../components/PageWraper';
+  // <-- import your wrapper
 
 const MainLayout = () => {
   const navigation = useNavigation();
 
-  // 🔁 AOS initialize on mount
   useEffect(() => {
     Aos.init({
-      duration: 800,     // Animation duration in ms
-      once: false,        // Only animate once
+      duration: 800,
+      once: false,
       easing: 'ease-in-out',
     });
   }, []);
+
+  useEffect(() => {
+    Aos.refresh();
+  });
 
   return (
     <div>
       <Navbar />
       <ToastContainer position="top-center" />
       {navigation.state === 'loading' && <Loader />}
-      <div className="min-h-[calc(100vh-116px)]">
+
+      {/* Wrap Outlet inside PageWrapper */}
+      <PageWrapper>
         <Outlet />
-      </div>
+      </PageWrapper>
+
       <Footer />
     </div>
   );
