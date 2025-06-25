@@ -6,6 +6,7 @@ import FeaturedGroup from '../components/FeaturedGroup';
 import Poster from '../components/Poster';
 import {  useLoaderData } from 'react-router';
 import HobbyAdd from '../components/HobbyAdd';
+import StatsSection from '../components/StatsSection';
 
 
 
@@ -22,6 +23,7 @@ const Home = () => {
             <BannerSlider/>
              <FeaturedGroup /> 
             <Poster/>
+            <StatsSection/>
             <HobbyAdd/>
             </div>
             

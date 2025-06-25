@@ -64,9 +64,9 @@ const router = createBrowserRouter([
       {
         path: "/auth/allGroup",
         element: (
-          <PrivateRoute>
+          
             <AllGroup />
-          </PrivateRoute>
+          
         ),
       },
       {
