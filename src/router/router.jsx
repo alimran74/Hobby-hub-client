@@ -18,6 +18,7 @@ import UpdateGroup from "../components/UpdateGroup";
 import About from "../pages/About";
 import BlogDetails from "../pages/BlogDetails";
 import Contact from "../pages/Contact";
+import Settings from "../components/Settings";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ const router = createBrowserRouter([
       {
         path:'/contact',
         element: <Contact/>
-      }
+      },
+      {
+        path:'/settings',
+        element: <Settings/>,
+      },
     ],
   },
   {
