@@ -1,0 +1,30 @@
+/* 📁 File: RegisterCard.css */
+.pc-card-wrapper {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --inner-gradient: linear-gradient(145deg, #60496e8c 0%, #71C4FF44 100%);
+  --behind-gradient: radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y), hsla(266, 100%, 90%, 0.3) 4%, hsla(266, 50%, 80%, 0.2) 10%, hsla(266, 25%, 70%, 0.1) 50%, hsla(266, 0%, 60%, 0) 100%);
+  position: relative;
+  perspective: 1200px;
+}
+
+.pc-card {
+  background-image: var(--behind-gradient), var(--inner-gradient);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  transform: rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+  border-radius: 1rem;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.pc-card input,
+.pc-card button {
+  transition: all 0.2s ease-in-out;
+}
+
+.pc-card:hover {
+  box-shadow: 0 0 40px rgba(147, 51, 234, 0.4);
+}
