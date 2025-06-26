@@ -17,6 +17,7 @@ import GroupCard from "../components/GroupCard";
 import UpdateGroup from "../components/UpdateGroup";
 import About from "../pages/About";
 import BlogDetails from "../pages/BlogDetails";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "/blogs/:id",
         element: <BlogDetails/>,
       },
+      {
+        path:'/contact',
+        element: <Contact/>
+      }
     ],
   },
   {

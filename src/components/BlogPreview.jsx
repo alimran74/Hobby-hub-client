@@ -23,7 +23,7 @@ const BlogPreview = () => {
   ];
 
   return (
-    <section className="px-6 md:px-8  bg-purple-100" data-aos="fade-up">
+    <section id="blog-preview" className="px-6 md:px-8  bg-purple-100" data-aos="fade-up">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-purple-700 mb-4">📚 HobbyHub Blog</h2>
         <p className="text-gray-600 mb-10">Explore guides, tips, and inspiration to make the most of your hobbies.</p>

@@ -47,6 +47,7 @@ const Navbar = () => {
             <li><NavLink to="/auth/createGroup">Create Group</NavLink></li>
             <li><NavLink to="/auth/myGroup">My Groups</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
         </div>
 
@@ -74,6 +75,7 @@ const Navbar = () => {
             <li><NavLink to="/auth/createGroup">Create Group</NavLink></li>
             <li><NavLink to="/auth/myGroup">My Groups</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
         </div>
 

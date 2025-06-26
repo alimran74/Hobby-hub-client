@@ -1,7 +1,21 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const handleBlogClick = () => {
+    // Home route e navigate koro
+    navigate("/", { replace: false });
+
+    // scroll korte ekto delay dite hobe jate home page fully render hoy
+    // tarpor scroll kora jay
+    setTimeout(() => {
+      const blogSection = document.getElementById("blog-preview");
+      if (blogSection) {
+        blogSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // 100ms delay diyechi, apni adjust korte paren
+  };
   return (
     <footer className="bg-purple-900 text-white w-full px-4 md:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -37,9 +51,19 @@ const Footer = () => {
         <nav className="space-y-2">
           <h6 className="text-lg font-semibold text-pink-400">Company</h6>
           <Link to='/about' className="link link-hover block">About</Link>
-          <a className="link link-hover block">Contact</a>
-          <a className="link link-hover block">Career</a>
-          <a className="link link-hover block">Blog</a>
+          <Link to='/contact' className="link link-hover block">Contact</Link>
+          
+          
+          <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault(); // page reload bondho korar jonno
+          handleBlogClick();
+        }}
+        className="link link-hover block"
+      >
+        Blog
+      </a>
         </nav>
 
         {/* Socials */}
