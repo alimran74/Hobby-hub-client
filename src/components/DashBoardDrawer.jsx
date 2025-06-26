@@ -1,5 +1,10 @@
 import { NavLink } from "react-router";
 import { Player } from "@lottiefiles/react-lottie-player";
+import RotatingText from "./RotatingText";
+import DecryptedText from "./DecryptedText";
+import SplashCursor from "./SplashCursor";
+import { motion } from "framer-motion"; // ✅ import motion
+
 const DashboardDrawer = ({ user, isOpen, onClose }) => {
   if (!isOpen) return null;
 
@@ -9,20 +14,35 @@ const DashboardDrawer = ({ user, isOpen, onClose }) => {
       <div
         className="fixed inset-0 backdrop-blur-md bg-white/20 bg-opacity-50"
         onClick={onClose}
-      ></div>
+      >
+        <SplashCursor />
+      </div>
 
-      {/* Sidebar */}
-      <div className="relative w-72 max-w-full bg-white shadow-lg p-6 z-50 overflow-y-auto">
-        <h3 className="text-xl text-center font-bold text-purple-700 mb-4">
-          Dashboard
+      {/* Sidebar with fade-in-left animation */}
+      <motion.div
+        initial={{ x: -200, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -200, opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="relative w-72 max-w-full bg-white shadow-lg p-6 z-50 overflow-y-auto"
+      >
+        {/* Dashboard Title */}
+        <h3 className="text-xl text-center font-bold mb-4">
+          <DecryptedText
+            text="Dashboard"
+            animateOn="view"
+            className="text-purple-700"
+            encryptedClassName="text-gray-400"
+            speed={40}
+            sequential={true}
+            revealDirection="start"
+          />
         </h3>
 
         {/* User Info */}
         <div className="mb-6 text-center">
           <img
-            src={
-              user?.photoURL || "https://i.ibb.co/YpKq7Q6/default-avatar.png"
-            }
+            src={user?.photoURL || "https://i.ibb.co/YpKq7Q6/default-avatar.png"}
             alt="User"
             className="w-16 h-16 rounded-full mx-auto"
           />
@@ -59,15 +79,15 @@ const DashboardDrawer = ({ user, isOpen, onClose }) => {
             📂 My Groups
           </NavLink>
           <NavLink
-  to="/settings"
-  className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700"
-  onClick={onClose}
->
-  ⚙️ Settings
-</NavLink>
+            to="/settings"
+            className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700"
+            onClick={onClose}
+          >
+            ⚙️ Settings
+          </NavLink>
           <NavLink
             to="/contact"
-            className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700 "
+            className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700"
             onClick={onClose}
           >
             📬 Contact Support
@@ -79,13 +99,47 @@ const DashboardDrawer = ({ user, isOpen, onClose }) => {
           >
             🏠 Back to Home
           </NavLink>
-          <p className="mt-8 text-xs text-center text-gray-500 italic">
-            “Start where you are. Use what you have. Do what you can.”
+
+          {/* Animated Quotes */}
+          <p className="mt-8 text-sm text-center italic text-gray-500">
+            <DecryptedText
+              text="Start where you are. Use what you have. Do what you can."
+              animateOn="view"
+              className="italic"
+              encryptedClassName="text-gray-300"
+              speed={40}
+              sequential={true}
+              revealDirection="start"
+            />
           </p>
+          <p className="text-sm text-center italic text-gray-500">
+            <DecryptedText
+              text="The best way to get started is to quit talking and begin doing."
+              animateOn="view"
+              className="italic"
+              encryptedClassName="text-gray-300"
+              speed={40}
+              sequential={true}
+              revealDirection="start"
+            />
+          </p>
+          <p className="text-sm text-center italic text-gray-500">
+            <DecryptedText
+              text="Success is not final, failure is not fatal: It is the courage to continue that counts."
+              animateOn="view"
+              className="italic"
+              encryptedClassName="text-gray-300"
+              speed={40}
+              sequential={true}
+              revealDirection="start"
+            />
+          </p>
+
+          {/* Lottie Animation */}
           <Player
             autoplay
             loop
-            src="../../public/Dashboard.json" // You can replace this with any Lottie JSON URL
+            src="/Dashboard.json"
             style={{
               height: "200px",
               width: "250px",
@@ -93,8 +147,24 @@ const DashboardDrawer = ({ user, isOpen, onClose }) => {
               marginTop: "10px",
             }}
           />
+
+          {/* Rotating Motivation Text */}
+          <RotatingText
+            texts={[
+              "🚀 Keep Learning.",
+              "🎯 Stay Consistent.",
+              "💡 Build Projects.",
+              "🔥 Never Give Up.",
+            ]}
+            splitBy="words"
+            auto
+            loop
+            staggerDuration={0.1}
+            mainClassName="text-xl font-bold text-purple-600"
+            elementLevelClassName="mx-1"
+          />
         </nav>
-      </div>
+      </motion.div>
     </div>
   );
 };
