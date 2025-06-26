@@ -15,7 +15,8 @@ import Loader from "../components/Loader";
 import PrivateRoute from "./PrivateRouter";
 import GroupCard from "../components/GroupCard";
 import UpdateGroup from "../components/UpdateGroup";
-
+import About from "../pages/About";
+import BlogDetails from "../pages/BlogDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,17 +29,23 @@ const router = createBrowserRouter([
         element: <Home />,
         loader: Loader,
       },
-       {
-        path:"/updateGroup/:id",
-       element: <UpdateGroup/>
+      {
+        path: "/updateGroup/:id",
+        element: <UpdateGroup />,
       },
 
-      
       {
         path: "/groups/:id",
-        element: <GroupCard/>
+        element: <GroupCard />,
       },
-     
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetails/>,
+      },
     ],
   },
   {
@@ -63,11 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/auth/allGroup",
-        element: (
-          
-            <AllGroup />
-          
-        ),
+        element: <AllGroup />,
       },
       {
         path: "/auth/login",
