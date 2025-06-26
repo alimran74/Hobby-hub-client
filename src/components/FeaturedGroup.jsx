@@ -28,7 +28,7 @@ const FeaturedGroup = () => {
     <div data-aos="fade-up" className="p-6">
       <h1 className="text-3xl font-bold mb-6 text-purple-800 text-center">Featured Groups</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {groups.slice(0, 6).map((group) => (
+        {groups.slice(0, 8).map((group) => (
           <div
             key={group._id}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"

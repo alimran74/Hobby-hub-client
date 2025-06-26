@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import DashboardDrawer from "./DashboardDrawer";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -146,9 +147,7 @@ const Navbar = () => {
                     <p className="text-sm text-gray-700">
                       {user.displayName || "User"}
                     </p>
-                    <p className="text-xs text-gray-500 break-words">
-                      {user.email}
-                    </p>
+                    <p className="text-xs text-gray-500 break-words">{user.email}</p>
                   </div>
                 </div>
 
@@ -188,78 +187,11 @@ const Navbar = () => {
       </div>
 
       {/* Dashboard Drawer */}
-      {isDrawerOpen && (
-        <div className="fixed inset-0 z-50 flex">
-          {/* Overlay */}
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50"
-            onClick={() => setIsDrawerOpen(false)}
-          ></div>
-
-          {/* Sidebar */}
-          <div className="relative w-72 max-w-full bg-white shadow-lg p-6 z-50 overflow-y-auto">
-            <h3 className="text-xl font-bold text-purple-700 mb-4">Dashboard</h3>
-
-            {/* User Info */}
-            <div className="mb-6 text-center">
-              <img
-                src={user?.photoURL || "https://i.ibb.co/YpKq7Q6/default-avatar.png"}
-                alt="User"
-                className="w-16 h-16 rounded-full mx-auto"
-              />
-              <p className="mt-2 font-medium">{user?.displayName}</p>
-              <p className="text-sm text-gray-500">{user?.email}</p>
-            </div>
-
-            {/* Navigation Links */}
-            <nav className="space-y-2">
-              <NavLink
-                to="/auth/createGroup"
-                className={({ isActive }) =>
-                  `block px-4 py-2 rounded hover:bg-purple-100 ${
-                    isActive ? "text-purple-700 font-bold bg-purple-100" : "text-gray-700"
-                  }`
-                }
-                onClick={() => setIsDrawerOpen(false)}
-              >
-                ➕ Create Group
-              </NavLink>
-              <NavLink
-                to="/auth/myGroup"
-                className={({ isActive }) =>
-                  `block px-4 py-2 rounded hover:bg-purple-100 ${
-                    isActive ? "text-purple-700 font-bold bg-purple-100" : "text-gray-700"
-                  }`
-                }
-                onClick={() => setIsDrawerOpen(false)}
-              >
-                📂 My Groups
-              </NavLink>
-              <NavLink
-                to="/profile"
-                className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700"
-                onClick={() => setIsDrawerOpen(false)}
-              >
-                👤 My Profile
-              </NavLink>
-              <NavLink
-                to="/my-reviews"
-                className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700"
-                onClick={() => setIsDrawerOpen(false)}
-              >
-                ⭐ My Reviews
-              </NavLink>
-              <NavLink
-                to="/"
-                className="block px-4 py-2 rounded hover:bg-purple-100 text-gray-700"
-                onClick={() => setIsDrawerOpen(false)}
-              >
-                🏠 Back to Home
-              </NavLink>
-            </nav>
-          </div>
-        </div>
-      )}
+      <DashboardDrawer
+        user={user}
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      />
     </>
   );
 };

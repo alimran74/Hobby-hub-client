@@ -1,50 +1,65 @@
-import { ArrowLeftCircle } from "lucide-react";
-import { Link } from "react-router";
-
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { useNavigate } from "react-router";
 
 const GroupListCard = ({ group }) => {
-  
- 
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const isCreator = user?.email === group.createdByEmail;
+
+  const handleDelete = async () => {
+    const confirmed = confirm("Are you sure you want to delete this group?");
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(
+        `https://hobby-hub-server-seven-bay.vercel.app/groups/${group._id}?email=${encodeURIComponent(
+          user.email
+        )}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const data = await res.json();
+      if (data.success) {
+        alert("✅ Group deleted successfully");
+        // TODO: Trigger state update or reload
+      } else {
+        alert("❌ Failed to delete group");
+      }
+    } catch (err) {
+      console.error("Delete error:", err);
+      alert("Error deleting group");
+    }
+  };
+
+  const handleEdit = () => {
+    navigate(`/updateGroup/${group._id}`);
+  };
+
   return (
-    <div className="text-6xl">
-    <div className="bg-purple-100 p-4 rounded shadow hover:shadow-lg transition mt-20 mx-auto ">
-      <img
-        src={group.image}
-        alt={group.name}
-        className="w-full h-48 object-cover rounded"
-      />
-      <h2 className="text-4xl font-extrabold mt-6 text-gray-900 dark:text-purple-900">
-        {group.name}
-      </h2>
-      <p className="mt-4 text-lg font-semibold text-gray-800 dark:text-purple-800">
-        <span className="text-xl font-bold">Group Name:</span> {group.groupName}
-      </p>
-      <p className="mt- text-lg font-semibold text-gray-800 dark:text-purple-800">
-        <span className="text-xl font-bold">Location:</span> {group.location}
-      </p>
-      <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
-        <span className="text-xl font-bold">Max Members:</span>{" "}
-        {group.maxMembers}
-      </p>
-      <p className="mt-2 text-lg font-semibold text-gray-800 dark:text-purple-800">
-        <span className="text-xl font-bold">Description:</span>{" "}
-        {group.description}
-      </p>
-      <p className="text-sm mt-1 text-gray-500">
-        Created by: {group.createdByName}
-      </p>
-      
-      <Link to="/">
-      <button
-    className="group mt-8 w-full flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:from-purple-600 hover:to-indigo-700"
-  >
-    <ArrowLeftCircle className="w-6 h-6 transition-transform duration-300 transform group-hover:-translate-x-1" />
-    <span className="font-bold text-lg tracking-wide">Go Home</span>
-  </button>
-      </Link>
+    <div className="border rounded-lg p-4 shadow hover:shadow-md">
+      <h2 className="text-xl font-semibold mb-2">{group.name || group.title}</h2>
+      <p>{group.description}</p>
+
+      {isCreator && (
+        <div className="mt-4 flex gap-3">
+          <button
+            onClick={handleEdit}
+            className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Edit
+          </button>
+          <button
+            onClick={handleDelete}
+            className="px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+          >
+            Delete
+          </button>
+        </div>
+      )}
     </div>
-    </div>
-    
   );
 };
 
